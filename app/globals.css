@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --font-display: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+    --font-body: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background: #07090d;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #39ff88;
+    border: 3px solid #07090d;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background:
+        radial-gradient(
+            circle at 18% 0%,
+            rgba(57, 255, 136, 0.09),
+            transparent 28rem
+        ),
+        radial-gradient(
+            circle at 88% 12%,
+            rgba(88, 166, 255, 0.1),
+            transparent 30rem
+        ),
+        linear-gradient(90deg, rgba(230, 237, 243, 0.035) 1px, transparent 1px),
+        linear-gradient(
+            180deg,
+            rgba(230, 237, 243, 0.035) 1px,
+            transparent 1px
+        ),
+        #07090d;
+    background-size:
+        auto,
+        auto,
+        36px 36px,
+        36px 36px;
+    color: #e6edf3;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+::selection {
+    background: rgba(57, 255, 136, 0.22);
+    color: #e6edf3;
+}
+
+@layer components {
+    .hud-panel {
+        @apply animate-fade-up border border-line-base bg-bg-panel/90 shadow-panel backdrop-blur transition-all duration-200;
+    }
+
+    .hud-label {
+        @apply font-display text-xs font-bold uppercase tracking-[0.18em] text-terminal;
+    }
+
+    .hud-link {
+        @apply text-ink-muted transition-all duration-200 hover:text-terminal focus:outline-none focus:ring-2 focus:ring-terminal/60 focus:ring-offset-2 focus:ring-offset-bg-base;
+    }
+
+    .terminal-window {
+        @apply relative overflow-hidden border border-line-base bg-bg-panel shadow-panel;
+        clip-path: polygon(
+            0 0,
+            calc(100% - 24px) 0,
+            100% 24px,
+            100% 100%,
+            18px 100%,
+            0 calc(100% - 18px)
+        );
+    }
+
+    .terminal-window::before {
+        content: "";
+        @apply absolute left-0 right-0 top-0 h-px bg-terminal/40;
+    }
+
+    .scanline {
+        @apply pointer-events-none absolute inset-x-0 top-0 h-px bg-terminal/40 opacity-60;
+        animation: sweep 4s linear infinite;
+    }
+
+    .cut-panel {
+        clip-path: polygon(
+            0 0,
+            calc(100% - 18px) 0,
+            100% 18px,
+            100% 100%,
+            0 100%
+        );
+    }
+
+    .menu-glow:hover {
+        box-shadow: 0 0 16px rgba(57, 255, 136, 0.2);
+    }
+}
