@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Share_Tech_Mono } from "next/font/google";
 import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </main>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
