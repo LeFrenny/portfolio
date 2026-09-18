@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Keep a running dev server from overwriting production preview artifacts.
-  distDir: process.env.NODE_ENV === "development" ? ".next" : ".next-production",
+  // Vercel expects .next; keep local production previews separate from development.
+  distDir:
+    process.env.VERCEL === "1" || process.env.NODE_ENV === "development"
+      ? ".next"
+      : ".next-production",
   images: {
     domains: [],
   },
