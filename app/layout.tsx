@@ -1,34 +1,34 @@
 import type { Metadata } from "next";
-import { Inter, Share_Tech_Mono } from "next/font/google";
 import type { ReactNode } from "react";
-import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-});
-
-const shareTechMono = Share_Tech_Mono({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-display",
-});
-
 export const metadata: Metadata = {
-  title: "Nitish | ML & CV Engineer",
+  title: {
+    default: "Nitish — Choose your own path",
+    template: "%s | Nitish",
+  },
   description:
-    "Computer Vision engineer and data analyst. Founder of Kinesis — AI motion capture for football academies. Open to ML/CV and SWE roles in Tokyo and Singapore.",
+    "Sports, computers, and games. Explore Nitish's projects, interests, and things he's learning along the way.",
 };
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${shareTechMono.variable}`}>
-      <body className="font-body antialiased">
-        <div className="min-h-screen">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('portfolio-theme');document.documentElement.dataset.theme=t==='light'||t==='dark'?t:(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark')}catch(e){}`,
+          }}
+        />
+      </head>
+      <body>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <div className="site-shell">
           <Navbar />
-          <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+          <main id="main-content" tabIndex={-1}>
             {children}
           </main>
           <Footer />

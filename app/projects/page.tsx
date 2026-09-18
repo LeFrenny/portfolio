@@ -1,54 +1,25 @@
-import ProjectCard, { type Project } from "@/components/ProjectCard";
+import type { Metadata } from "next";
 import SectionHeader from "@/components/SectionHeader";
-
-const projects: Project[] = [
-  {
-    name: "J1 League Player Performance Dashboard",
-    description:
-      "Scouting analytics dashboard using StatsBomb and Hudl data. K-Means clustering, Ridge regression, and cosine similarity for player profiling. Custom NumPy ML pipeline.",
-    tags: ["Python", "StatsBomb", "K-Means", "Ridge Regression", "NumPy"],
-    href: "https://github.com/Solace00/j1-player-performance-dashboard",
-    stat: "complete",
-  },
-  {
-    name: "Baseball Pitch Type Recommender",
-    description:
-      "Multi-classifier pitch recommendation system using XGBoost. Includes data leakage diagnosis and fix. Recommends optimal pitch type based on game situation and batter history.",
-    tags: ["Python", "XGBoost", "ML", "Baseball"],
-    href: "https://github.com/Solace00/baseball-pitch-type-recommender",
-    stat: "complete",
-  },
-  {
-    name: "Baseball Pitch Type Classifier",
-    description:
-      "Classification pipeline for identifying pitch types from statistical features. Comparative analysis across multiple classifiers with performance benchmarking.",
-    tags: ["Python", "Classification", "Scikit-learn", "Baseball"],
-    href: "https://github.com/Solace00/baseball-pitch-type-classifier",
-    stat: "complete",
-  },
-  {
-    name: "AlisaBot",
-    description:
-      "Discord bot with RPG systems, economy mechanics, and AI integration. Built in C# with Discord.Net.",
-    tags: ["C#", "Discord.Net", "RPG Systems", "AI"],
-    href: "https://github.com/Solace00/AlisaBot",
-    stat: "active",
-  },
-];
-
+import ProjectCard from "@/components/ProjectCard";
+import { projects } from "@/lib/projects";
+export const metadata: Metadata = { title: "Work" };
 export default function ProjectsPage() {
   return (
-    <div>
+    <>
       <SectionHeader
-        eyebrow="$ ls ./projects"
-        title="Projects"
-        description="Selected repositories and experiments, kept as simple cards with stack tags and placeholder links."
+        eyebrow="The project archive"
+        title="Experiments worth keeping."
+        description="A bit of sport, a bit of code, and a lot of figuring things out. Here’s what that looks like in practice."
       />
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="project-grid projects-full">
         {projects.map((project) => (
-          <ProjectCard key={project.name} project={project} />
+          <ProjectCard key={project.href} project={project} />
         ))}
       </div>
-    </div>
+      <p className="page-footnote">
+        Want to look under the hood? Each project title opens its GitHub
+        repository.
+      </p>
+    </>
   );
 }

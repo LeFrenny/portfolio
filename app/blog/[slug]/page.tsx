@@ -18,11 +18,11 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   try {
     const post = await getPostBySlug(slug);
     return {
-      title: `${post.title} | Frenny`,
+      title: post.title,
     };
   } catch {
     return {
-      title: "Post not found | Frenny",
+      title: "Note not found",
     };
   }
 }
@@ -40,19 +40,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           title={post.title}
           description={post.excerpt}
         />
-        <div className="hud-panel p-6 sm:p-8">
-          <div className="mb-6 flex flex-wrap gap-2">
+        <div className="article-panel">
+          <ul className="tags">
             {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="border border-line-base bg-bg-panel-soft px-2 py-1 font-display text-[11px] text-ink-muted"
-              >
-                {tag}
-              </span>
+              <li key={tag}>{tag}</li>
             ))}
-          </div>
+          </ul>
           <div
-            className="prose prose-invert max-w-none prose-headings:font-display prose-headings:text-ink prose-a:text-terminal prose-strong:text-ink prose-p:text-ink-muted prose-li:text-ink-muted"
+            className="prose article-prose prose-headings:font-display"
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
         </div>
