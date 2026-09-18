@@ -12,8 +12,8 @@ const contacts = [
   {
     label: "GitHub",
     description: "Code, experiments, and works in progress.",
-    value: "Solace00",
-    href: "https://github.com/Solace00",
+    value: "LeFrenny",
+    href: "https://github.com/LeFrenny",
     icon: "⌘",
   },
   {

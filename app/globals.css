@@ -1247,6 +1247,96 @@ main {
     gap: 14px;
   }
 }
+/* Small, responsive details that carry the trainer-card visual language. */
+.cursor-orbit {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms;
+}
+.cursor-orbit[data-visible="true"] { opacity: 1; }
+.cursor-orbit span {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: -16px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0.65;
+  transition: transform 220ms, background 220ms, border-color 220ms;
+}
+.cursor-orbit[data-active="true"] span {
+  transform: scale(1.65);
+  border-color: var(--highlight-text);
+  background: color-mix(in srgb, var(--highlight) 12%, transparent);
+}
+.site-header nav a::before {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+.site-header nav a:hover::before,
+.site-header nav a:focus-visible::before { transform: scaleX(1); }
+.project-card, .interest-note, .photo-note, .contact-icon {
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), border-color 250ms, box-shadow 250ms;
+}
+.project-card:focus-within, .interest-note:focus-within {
+  border-color: var(--accent);
+}
+.project-art { isolation: isolate; }
+.project-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, #ffffff18 48%, transparent 66%);
+  transform: translateX(-110%);
+  transition: transform 700ms ease;
+}
+.button span, .text-link span, .project-body h3 span, .contact-arrow {
+  display: inline-block;
+  transition: transform 250ms ease;
+}
+.button:hover span, .text-link:hover span, .project-body h3 a:hover span {
+  transform: translate(3px, -3px);
+}
+.contact-item:hover .contact-arrow { transform: translateX(5px); }
+.hero-copy h1 { text-wrap: balance; }
+.hero-copy h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin-top: 25px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--highlight) 0 65%, var(--accent) 65%);
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 3v18M3 12h18' stroke='%231b1528' stroke-width='4'/%3E%3Cpath d='M12 3v18M3 12h18' stroke='%23f3cb79' stroke-width='2'/%3E%3C/svg%3E") 12 12, crosshair;
+  }
+  .cursor-orbit { display: block; }
+  .project-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px var(--shadow);
+  }
+  .project-card:hover .project-art::after { transform: translateX(110%); }
+  .interest-note:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .profile-display:hover .photo-note { transform: rotate(-2deg) translateY(-4px); }
+  .contact-item:hover .contact-icon { transform: rotate(-6deg); border-color: var(--accent); }
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

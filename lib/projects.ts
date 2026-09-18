@@ -12,7 +12,7 @@ export const projects: Project[] = [
     description:
       "A J1 League scouting dashboard that explores player profiles through clustering, regression, and similarity.",
     tags: ["Python", "Sports analytics", "NumPy"],
-    href: "https://github.com/Solace00/j1-player-performance-dashboard",
+    href: "https://github.com/LeFrenny/j1-player-performance-dashboard",
     status: "Complete",
     kind: "football",
   },
@@ -21,7 +21,7 @@ export const projects: Project[] = [
     description:
       "A baseball pitch recommender built around game situations and batter history, including a closer look at data leakage.",
     tags: ["Python", "XGBoost", "Baseball"],
-    href: "https://github.com/Solace00/baseball-pitch-type-recommender",
+    href: "https://github.com/LeFrenny/baseball-pitch-type-recommender",
     status: "Complete",
     kind: "baseball",
   },
@@ -30,7 +30,7 @@ export const projects: Project[] = [
     description:
       "A Discord companion with RPG systems, economy mechanics, and AI integration. An ongoing playground for building game systems.",
     tags: ["C#", "Discord.Net", "Games"],
-    href: "https://github.com/Solace00/AlisaBot",
+    href: "https://github.com/LeFrenny/AlisaBot",
     status: "In progress",
     kind: "bot",
   },
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     description:
       "A classification pipeline comparing how different models identify baseball pitches from statistical features.",
     tags: ["Python", "Scikit-learn", "Classification"],
-    href: "https://github.com/Solace00/baseball-pitch-type-classifier",
+    href: "https://github.com/LeFrenny/baseball-pitch-type-classifier",
     status: "Complete",
     kind: "baseball",
   },

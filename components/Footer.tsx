@@ -6,7 +6,7 @@ export default function Footer() {
         <strong>nitish.</strong> Still exploring. Always building.
       </p>
       <div>
-        <a href="https://github.com/Solace00">GitHub</a>
+        <a href="https://github.com/LeFrenny">GitHub</a>
         <a href="https://www.linkedin.com/in/nitish01/">LinkedIn</a>
         <Link href="/contact">
           Say hello <span aria-hidden="true">↗</span>
